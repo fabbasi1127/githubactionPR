@@ -4,8 +4,9 @@ on:
   - workflow_dispatch
 
 job:
-  runson: ubuntu -latest
+  
   lintingOperations:
+    runson: ubuntu -latest
     steps:
       -uses: actions/checkout@v6
       -uses: actions/setup-python@v6
