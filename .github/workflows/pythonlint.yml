@@ -1,19 +1,21 @@
 name: python linting
-security-events: read
 
 on:
-  - workflow_dispatch
+  workflow_dispatch:
 
-job:
+jobs:
   lintingOperations:
+    runs-on: ubuntu-latest
     permissions:
-      security-events: read
-    runson: ubuntu -latest
+      contents: read
+      security-events: write # Changed to write to allow the action to upload results
     steps:
-      -uses: actions/checkout@v6
-      -uses: actions/setup-python@v6
-       with:  
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
           python-version: '3.13'
-      -uses: advanced-security/python-lint-code-scanning-action@v1
-       with:
+
+      - uses: advanced-security/python-lint-code-scanning-action@v1
+        with:
           linter: flake8
+
