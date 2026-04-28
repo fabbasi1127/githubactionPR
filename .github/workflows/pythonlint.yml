@@ -4,14 +4,13 @@ on:
   - workflow_dispatch
 
 job:
-  
   lintingOperations:
     runson: ubuntu -latest
     steps:
       -uses: actions/checkout@v6
       -uses: actions/setup-python@v6
-        with:
-          python-version: '3.13'
+          with:  
+            python-version: '3.13'
       -uses: advanced-security/python-lint-code-scanning-action@v1
-        with:
-          linter: flake8
+          with:
+            linter: flake8
